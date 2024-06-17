@@ -11,6 +11,9 @@
 #SBATCH --mail-user=kuceral4@fel.cvut.cz  # where send info about job
 #SBATCH --mail-type=BEGIN,FAIL,END        # what to send, valid type values are NONE, BEGIN, END, FAIL, REQUEUE, ALL
 
+# ssh -N -L 7865:g06:7865 kuceral4@login3.rci.cvut.cz
+
+
 display_help() {
   help_message="
 Usage: sbatch [sbatch options] run.batch
@@ -29,4 +32,4 @@ Usage: sbatch [sbatch options] run.batch
 }
 
 
-singularity run --nv singularity/Fooocus.sif python launch.py
+singularity run --nv singularity/Fooocus.sif python entry_with_update.py --listen
