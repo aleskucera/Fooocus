@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#SBATCH --nodes=1                         # 1 node
+#SBATCH --ntasks-per-node=1               # 1 task per node
+#SBATCH --time=1-00:00:00                 # time limits: 1 day
+#SBATCH --error=run.out                   # standard error file
+#SBATCH --output=run.out                  # standard output file
+#SBATCH --partition=amdgpu                # partition name
+#SBATCH --cpus-per-task=8                 # number of CPUs
+#SBATCH --gpus-per-node=1                 # number of GPUs
+#SBATCH --mail-user=kuceral4@fel.cvut.cz  # where send info about job
+#SBATCH --mail-type=BEGIN,FAIL,END        # what to send, valid type values are NONE, BEGIN, END, FAIL, REQUEUE, ALL
+
+display_help() {
+  help_message="
+Usage: sbatch [sbatch options] run.batch
+
+  Sbatch Options:
+    --nodes              Number of nodes (default: 1)
+    --time               Time limit (default: 1-00:00:00)
+    --error              Standard error file (default: train.out)
+    --output             Standard output file (default: train.out)
+    --partition          Partition name (default: amdgpu)
+    --gpus-per-node      Number of GPUs per node (default: 1)
+    --cpus-per-task      Number of CPUs per task (default: 8)
+"
+  echo "$help_message"
+  exit 1
+}
+
+
+singularity run --nv python launch.py

@@ -1,0 +1,29 @@
+BootStrap: docker
+From: pytorchlightning/pytorch_lightning:base-cuda-py3.10-torch2.2-cuda12.1.0
+
+%labels
+    Version 0.0.1
+    
+%setup
+    mkdir -p $SINGULARITY_ROOTFS/.tmp
+
+%files
+    requirements_versions.txt /.tmp/requirements.txt
+
+%post
+    apt-get update
+    apt-get install -y --no-install-recommends \
+        bzip2 \
+        ca-certificates \
+        curl \
+        git \
+        less \
+        locales \
+        unzip \
+        python3-pip
+    
+    pip3 install --upgrade pip
+    pip3 install -r /.tmp/requirements.txt
+
+    rm -rf /.tmp/requirements.txt
+
