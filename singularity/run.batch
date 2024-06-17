@@ -29,4 +29,4 @@ Usage: sbatch [sbatch options] run.batch
 }
 
 
-singularity run --nv python launch.py
+singularity run --nv singularity/Fooocus.sif python launch.py
