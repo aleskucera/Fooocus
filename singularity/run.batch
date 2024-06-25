@@ -33,4 +33,4 @@ Usage: sbatch [sbatch options] run.batch
 }
 
 
-singularity run --nv singularity/Fooocus.sif python entry_with_update.py --listen
+singularity run --nv singularity/Fooocus.sif python launch.py
