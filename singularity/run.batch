@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#SBATCH --mem=32G                         # memory
 #SBATCH --nodes=1                         # 1 node
 #SBATCH --ntasks-per-node=1               # 1 task per node
 #SBATCH --time=1-00:00:00                 # time limits: 1 day
@@ -11,7 +12,7 @@
 #SBATCH --mail-user=kuceral4@fel.cvut.cz  # where send info about job
 #SBATCH --mail-type=BEGIN,FAIL,END        # what to send, valid type values are NONE, BEGIN, END, FAIL, REQUEUE, ALL
 
-# ssh -N -L 7865:g06:7865 kuceral4@login3.rci.cvut.cz
+# ssh -N -L 7865:n25:7865 kuceral4@login.rci.cvut.cz
 
 
 display_help() {
